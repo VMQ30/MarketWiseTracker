@@ -25,7 +25,7 @@ lenovo ideapad | core i3 | 4 GB | 500GB HDD | intel UHD | ₱25000.00
 
 Asus TUF Gaming F15 i5 16GB RAM 512GB SSD RTX 3050Ti ₱58500
 
-acer nitro 5 - ryzen 5 - 8gb - 256ssd - gtx1650 - php3647300
+acer nitro 5 - ryzen 5 - 8gb - 256ssd - gtx1650 - php364730
 
 Dell XPS13 i7 16GB RAM 1TB SSD Iris Xe PHP 98000.00
 
