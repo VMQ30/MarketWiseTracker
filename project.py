@@ -22,8 +22,6 @@ def main():
     args = parser.parse_args()
     laptop_list = extract_data(args.n)
 
-    for laptop in laptop_list:
-        print(laptop)
     convert_to_csv(laptop_list)
 
 
@@ -39,7 +37,7 @@ def extract_data(file_path):
               an extracted laptop (Model, RAM, SSD, Processor, GPU).
     """
 
-    with open(file_path, "r") as file:
+    with open(file_path, "r", encoding="utf-8") as file:
         content = file.read()
 
     details = re.split(r"\n *\n", content.strip())
@@ -50,6 +48,7 @@ def extract_data(file_path):
         processor = get_processor(detail)
         gpu = get_gpu(detail)
         ram, storage_list = get_ram_storage(detail)
+        price = get_price(detail)
 
         laptop_list.append(
             {
@@ -58,10 +57,24 @@ def extract_data(file_path):
                 "Storage": storage_list,
                 "Processor": processor,
                 "Graphics": gpu,
+                "Price": price,
             }
         )
 
     return laptop_list
+
+
+def get_price(detail):
+    if price := re.search(
+        r"(₱|PHP)\s*([\d\s,]+(?:\.\d{1,2})?)",
+        detail,
+        re.IGNORECASE,
+    ):
+        num = price.group(2).replace(",", "")
+        num = float(num.replace(" ", ""))
+
+        return f"₱{num:,.2f}"
+    return "None"
 
 
 def get_model(detail):
@@ -80,7 +93,7 @@ def get_model(detail):
         r"(dell|hp|lenovo|asus|acer|msi|macbook)", detail, re.IGNORECASE
     ):
         return model.group(0).title()
-    return None
+    return "None"
 
 
 def get_processor(detail):
@@ -111,7 +124,7 @@ def get_processor(detail):
         else:
             processor = processor.lower()
         return processor
-    return None
+    return "None"
 
 
 def get_gpu(detail):
@@ -135,8 +148,9 @@ def get_gpu(detail):
         re.IGNORECASE,
     ):
         if gpu.group(2):
-            return f"{gpu.group(2).upper()} {gpu.group(4)}"
-        return gpu.group(0)
+            return f"{gpu.group(2).upper().strip()} {gpu.group(4).strip()}"
+        return gpu.group(0).strip()
+    return "None"
 
 
 def get_ram_storage(detail):
@@ -187,13 +201,18 @@ def get_ram_storage(detail):
             else:
                 storage_list.append(f"{size}{unit}")
 
+    if ram is None:
+        ram = "None"
+    if len(storage_list) == 0:
+        storage_list.append("None")
     return ram, storage_list
 
 
 def convert_to_csv(laptops):
-    with open("laptops_info.csv", "a", newline="") as file:
+    with open("laptops_info.csv", "a", newline="", encoding="utf-8") as file:
         writer = csv.DictWriter(
-            file, fieldnames=["Model", "RAM", "Storage", "Processor", "Graphics"]
+            file,
+            fieldnames=["Model", "RAM", "Storage", "Processor", "Graphics", "Price"],
         )
         for laptop in laptops:
             storage_value = laptop["Storage"]
@@ -207,6 +226,7 @@ def convert_to_csv(laptops):
                     "Storage": storage_value,
                     "Processor": laptop["Processor"],
                     "Graphics": laptop["Graphics"],
+                    "Price": laptop["Price"],
                 }
             )
 

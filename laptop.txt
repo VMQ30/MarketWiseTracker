@@ -1,65 +1,64 @@
-
-Dell | i5 | 12 gb ram | 256 ssd | RTX 440
+Dell | i5 | 12 gb ram | 256 ssd | RTX 440 | ₱52 500
 
 Brand: HP
-Processor: Intel Core I7
+Processor: Intel Core i7
 Memory: 16GB
 Storage: 512GB SSD
 Graphics: GTX 1650
+Price: PHP 68000
 
-Lenovo, Ryzen5, 8GB RAM, 1TB HDD, no gpu
+Lenovo, Ryzen 5, 8GB RAM, 1TB HDD, no gpu, php36 200.00
 
-ASUS / i9 / 32GB / 1TB SSD / RTX3080
+ASUS / i9 / 32GB / 1TB SSD / RTX3080 - ₱145 000.00
 
-Acer Aspire - i3 processor - 4gb ram - 128gb ssd - integrated graphics
+Acer Aspire - i3 processor - 4gb ram - 128gb ssd - integrated graphics - PHP22500
 
-MSI GF63 | i7-10750H | 16 GB RAM | 512 SSD | RTX 3050
+MSI GF63 | i7-10750H | 16 GB RAM | 512 SSD | RTX 3050 | php72300
 
-MacBook Pro m1 8gb unified memory 256gb storage
+MacBook Pro M1 8gb unified memory 256gb storage ₱78,000
 
-DELL inspiron i5 10thgen 8GB 1TB HDD + 256 SSD nvidia mx350
+DELL inspiron i5 10thgen 8GB 1TB HDD + 256 SSD nvidia mx350 ₱49 900.50
 
-HP Pavilion (Ryzen7) RAM=16gb Storage=512ssd GPU=rtx3050
+HP Pavilion (Ryzen7) RAM=16gb Storage=512ssd GPU=rtx3050 PHP 65700
 
-lenovo ideapad | core i3 | 4 GB | 500GB HDD | intel UHD
+lenovo ideapad | core i3 | 4 GB | 500GB HDD | intel UHD | ₱25000.00
 
-Asus TUF Gaming F15 i5 16GB RAM 512GB SSD RTX 3050Ti
+Asus TUF Gaming F15 i5 16GB RAM 512GB SSD RTX 3050Ti ₱58500
 
-acer nitro 5 - ryzen 5 - 8gb - 256ssd - gtx1650
+acer nitro 5 - ryzen 5 - 8gb - 256ssd - gtx1650 - php3647300
 
-Dell XPS13 i7 16GB RAM 1TB SSD Iris Xe
+Dell XPS13 i7 16GB RAM 1TB SSD Iris Xe PHP 98000.00
 
-HP ENVY x360 Ryzen 5 / 8GB / 256GB SSD / Vega Graphics
+HP ENVY x360 Ryzen 5 / 8GB / 256GB SSD / Vega Graphics ₱ 56 500.50
 
-Lenovo Legion 5 Pro Ryzen7 32gb ram 1tb ssd rtx 3070
+Lenovo Legion 5 Pro Ryzen7 32gb ram 1tb ssd rtx 3070 ₱122000
 
-ASUS VivoBook i3 8gb ram 256 ssd no dedicated gpu
+ASUS VivoBook i3 8gb ram 256 ssd no dedicated gpu PHP 28 200
 
-MSI Katana GF66 i7 16GB RAM 1TB SSD RTX3060
+MSI Katana GF66 i7 16GB RAM 1TB SSD RTX3060 php 85000
 
-Acer Swift 3 Ryzen 5 16GB RAM 512 SSD integrated
+Acer Swift 3 Ryzen 5 16GB RAM 512 SSD integrated ₱44 500
 
-Dell Latitude 5420 i5 8GB RAM 256GB SSD Intel Iris Xe
+Dell Latitude 5420 i5 8GB RAM 256GB SSD Intel Iris Xe ₱ 51000.00
 
-hp notebook i3 4gb ram 1tb hdd
+hp notebook i3 4gb ram 1tb hdd PHP 21800
 
-Lenovo ThinkPad T14 i7 16GB 512GB SSD UHD Graphics
+Lenovo ThinkPad T14 i7 16GB 512GB SSD UHD Graphics ₱88500
 
-ASUS ROG Strix G15 Ryzen 9 32GB RAM 1TB SSD RTX 3080
+ASUS ROG Strix G15 Ryzen 9 32GB RAM 1TB SSD RTX 3080 PHP149000
 
-Acer Aspire 7 i5 8GB RAM 512 SSD GTX1650
+Acer Aspire 7 i5 8GB RAM 512 SSD GTX1650 PHP 46 200.50
 
-Dell G15 Gaming i7 16GB 512GB SSD RTX3050
+Dell G15 Gaming i7 16GB 512GB SSD RTX3050 ₱71900
 
-HP Omen 16 Ryzen7 16GB RAM 1TB SSD RTX 3060
+HP Omen 16 Ryzen7 16GB RAM 1TB SSD RTX 3060 ₱95000
 
-dell-i5-12gb-256ssd-rtx440
+dell-i5-12gb-256ssd-rtx440-₱52 500
 
-HP; i7; 16GB; 512SSD; GTX1650
+HP; i7; 16GB; 512SSD; GTX1650; PHP 68 000
 
-Lenovo Ryzen5 8 GB 1000GB HDD none
+Lenovo Ryzen5 8 GB 1000GB HDD none ₱36200.00
 
-ASUS i9 32 gb 1 tb ssd rtx 3080
+ASUS i9 32 gb 1 tb ssd rtx 3080 ₱145 000
 
-acer i3/4gb/128ssd/intel
-
+acer i3/4gb/128ssd/intel php22 500.50
