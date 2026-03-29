@@ -1,0 +1,65 @@
+
+Dell | i5 | 12 gb ram | 256 ssd | RTX 440
+
+Brand: HP
+Processor: Intel Core I7
+Memory: 16GB
+Storage: 512GB SSD
+Graphics: GTX 1650
+
+Lenovo, Ryzen5, 8GB RAM, 1TB HDD, no gpu
+
+ASUS / i9 / 32GB / 1TB SSD / RTX3080
+
+Acer Aspire - i3 processor - 4gb ram - 128gb ssd - integrated graphics
+
+MSI GF63 | i7-10750H | 16 GB RAM | 512 SSD | RTX 3050
+
+MacBook Pro m1 8gb unified memory 256gb storage
+
+DELL inspiron i5 10thgen 8GB 1TB HDD + 256 SSD nvidia mx350
+
+HP Pavilion (Ryzen7) RAM=16gb Storage=512ssd GPU=rtx3050
+
+lenovo ideapad | core i3 | 4 GB | 500GB HDD | intel UHD
+
+Asus TUF Gaming F15 i5 16GB RAM 512GB SSD RTX 3050Ti
+
+acer nitro 5 - ryzen 5 - 8gb - 256ssd - gtx1650
+
+Dell XPS13 i7 16GB RAM 1TB SSD Iris Xe
+
+HP ENVY x360 Ryzen 5 / 8GB / 256GB SSD / Vega Graphics
+
+Lenovo Legion 5 Pro Ryzen7 32gb ram 1tb ssd rtx 3070
+
+ASUS VivoBook i3 8gb ram 256 ssd no dedicated gpu
+
+MSI Katana GF66 i7 16GB RAM 1TB SSD RTX3060
+
+Acer Swift 3 Ryzen 5 16GB RAM 512 SSD integrated
+
+Dell Latitude 5420 i5 8GB RAM 256GB SSD Intel Iris Xe
+
+hp notebook i3 4gb ram 1tb hdd
+
+Lenovo ThinkPad T14 i7 16GB 512GB SSD UHD Graphics
+
+ASUS ROG Strix G15 Ryzen 9 32GB RAM 1TB SSD RTX 3080
+
+Acer Aspire 7 i5 8GB RAM 512 SSD GTX1650
+
+Dell G15 Gaming i7 16GB 512GB SSD RTX3050
+
+HP Omen 16 Ryzen7 16GB RAM 1TB SSD RTX 3060
+
+dell-i5-12gb-256ssd-rtx440
+
+HP; i7; 16GB; 512SSD; GTX1650
+
+Lenovo Ryzen5 8 GB 1000GB HDD none
+
+ASUS i9 32 gb 1 tb ssd rtx 3080
+
+acer i3/4gb/128ssd/intel
+
