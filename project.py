@@ -26,6 +26,7 @@ def main():
     convert_to_csv(laptop_list)
     laptops = load_from_csv("laptops_info.csv")
     Laptop.analyze(laptops)
+    Laptop.convert_to_pdf("laptop_analysis.pdf", laptops)
 
 
 def extract_data(file_path):

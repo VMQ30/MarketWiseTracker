@@ -1,4 +1,5 @@
 from tabulate import tabulate
+from fpdf import FPDF
 
 
 class Laptop:
@@ -198,3 +199,84 @@ class Laptop:
             Laptop.group_by_category(laptops),
             ["Category", "Top Processor", "Top GPU", "Total Units", "Avg Price"],
         )
+
+    @staticmethod
+    def convert_to_pdf(filename, laptops):
+        pdf = FPDF()
+        pdf.add_page()
+
+        def clean_val(val):
+            return str(val).replace("₱", "P")
+
+        pdf.set_font("helvetica", "B", 18)
+        pdf.cell(0, 15, "Comprehensive Laptop Market Report", ln=True, align="C")
+        pdf.ln(5)
+
+        pdf.set_font("helvetica", "B", 12)
+        pdf.cell(0, 10, "Overall Price Statistics", ln=True)
+        pdf.set_font("helvetica", "", 10)
+        pdf.cell(
+            0, 7, f"Average Market Price: P{Laptop.avg_price(laptops):,.2f}", ln=True
+        )
+        pdf.cell(
+            0, 7, f"Cheapest Unit Found: P{Laptop.min_price(laptops):,.2f}", ln=True
+        )
+        pdf.cell(
+            0, 7, f"Most Expensive Unit: P{Laptop.max_price(laptops):,.2f}", ln=True
+        )
+        pdf.ln(10)
+
+        analyses = [
+            (
+                "Market Segmentation",
+                "category",
+                ["Category", "Top CPU", "Top GPU", "Units", "Avg Price"],
+            ),
+            (
+                "Price by Processor",
+                "processor",
+                ["Processor", "Total Units", "Avg Price", "Max Price", "Min Price"],
+            ),
+            (
+                "Price by Graphics",
+                "graphics",
+                ["Graphics", "Total Units", "Avg Price", "Max Price", "Min Price"],
+            ),
+            (
+                "Price by RAM",
+                "ram",
+                ["RAM", "Total Units", "Avg Price", "Max Price", "Min Price"],
+            ),
+            (
+                "Brand Analysis",
+                "brand",
+                ["Brand", "Total Units", "Avg Price", "Max Price", "Min Price"],
+            ),
+        ]
+
+        for title, key, headers in analyses:
+            if pdf.get_y() > 230:
+                pdf.add_page()
+
+            pdf.set_font("helvetica", "B", 12)
+            pdf.cell(0, 10, title, ln=True)
+            pdf.set_font("helvetica", "", 9)
+
+            if key == "category":
+                data = Laptop.group_by_category(laptops)
+            else:
+                data = Laptop.group_and_analyze(laptops, key)
+
+            with pdf.table(text_align="CENTER", width=190) as table:
+                header_row = table.row()
+                for h in headers:
+                    header_row.cell(h)
+
+                for row in data:
+                    pdf_row = table.row()
+                    for item in row:
+                        pdf_row.cell(clean_val(item))
+            pdf.ln(10)
+
+        pdf.output(filename)
+        print(f"\nPDF Report saved as: {filename}")
