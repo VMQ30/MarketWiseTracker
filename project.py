@@ -30,17 +30,6 @@ def main():
 
 
 def extract_data(file_path):
-    """
-    Reads a raw text file and extracts laptop specs using regular expressions.
-
-    Args:
-        file_path (str): The path to the text file containing raw laptop listings.
-
-    Returns:
-        list: A list of dictionaries, where each dictionary represents
-              an extracted laptop (Brand, RAM, SSD, Processor, GPU).
-    """
-
     with open(file_path, "r", encoding="utf-8") as file:
         content = file.read()
 
@@ -78,43 +67,18 @@ def get_price(detail):
         num = float(num.replace(" ", ""))
 
         return f"₱{num:,.2f}"
-    return "None"
+    return None
 
 
 def get_brand(detail):
-    """
-    Extracts the laptop brand from a raw string.
-
-    Args:
-        detail (str): The raw text or title of a laptop listing.
-
-    Returns:
-        str | None: The title-cased brand name if found (e.g., 'Dell'),
-            otherwise None.
-    """
-
     if brand := re.search(
         r"(dell|hp|lenovo|asus|acer|msi|macbook)", detail, re.IGNORECASE
     ):
         return brand.group(0).title()
-    return "None"
+    return None
 
 
 def get_processor(detail):
-    """
-    Identifies and standardizes the processor type from listing details.
-
-    Handles Intel i-series, AMD Ryzen series, and Apple M-series chips.
-    Standardizes 'ryzen5' to 'Ryzen 5' and 'I7' to 'i7'.
-
-    Args:
-        detail (str): The raw text of the laptop listing.
-
-    Returns:
-        str | None: The formatted processor string (e.g., 'i7', 'Ryzen 5', 'M1'),
-            or None if no match is found.
-    """
-
     if processor := re.search(
         r"(i[3579]|(ryzen) *([3579])|m1|m2)", detail, re.IGNORECASE
     ):
@@ -128,24 +92,10 @@ def get_processor(detail):
         else:
             processor = processor.lower()
         return processor
-    return "None"
+    return None
 
 
 def get_gpu(detail):
-    """
-    Extracts graphics card information, supporting dedicated and integrated units.
-
-    Specifically targets Nvidia (RTX, GTX, MX), AMD (Vega), and
-    Intel (Iris Xe, UHD, Arc) architectures.
-
-    Args:
-        detail (str): The raw text of the laptop listing.
-
-    Returns:
-        str | None: The uppercase GPU name and brand number (e.g., 'RTX 3050'),
-            or None if no match is found.
-    """
-
     if gpu := re.search(
         r"((rtx|gtx|mx)|(iris *xe|vega|integrated|uhd|arc)) *(\d+\w*)?",
         detail,
@@ -154,26 +104,10 @@ def get_gpu(detail):
         if gpu.group(2):
             return f"{gpu.group(2).upper().strip()} {gpu.group(4).strip()}"
         return gpu.group(0).strip()
-    return "None"
+    return None
 
 
 def get_ram_storage(detail):
-    """
-    Parses memory and storage capacity using a heuristic based on size and keywords.
-
-    This function uses regex to find numeric capacities followed by units (GB/TB).
-    It differentiates between RAM and Storage by looking for keywords or
-    inferring based on common hardware sizes (e.g., <128GB is usually RAM).
-
-    Args:
-        detail (str): The raw text of the laptop listing.
-
-    Returns:
-        tuple: A tuple containing:
-            - ram (str | None): The formatted RAM size (e.g., '16GB').
-            - storage_list (list): A list of storage strings (e.g., ['512GB SSD']).
-    """
-
     ram = None
     storage_list = []
 
@@ -205,10 +139,6 @@ def get_ram_storage(detail):
             else:
                 storage_list.append(f"{size}{unit}")
 
-    if ram is None:
-        ram = "None"
-    if len(storage_list) == 0:
-        storage_list.append("None")
     return ram, storage_list
 
 
