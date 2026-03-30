@@ -22,7 +22,9 @@ class Laptop:
 
     @staticmethod
     def get_prices(laptops):
-        return [laptop.price for laptop in laptops if laptop is not None]
+        return [
+            laptop.price for laptop in laptops if laptop and laptop.price is not None
+        ]
 
     @staticmethod
     def avg_price(laptops):
@@ -41,78 +43,40 @@ class Laptop:
 
     # Core Insights
     @staticmethod
-    def avg_price_processor(laptops):
+    def group_and_analyze(laptops, key):
         data = {}
 
-        for laptop in laptops:
-            if laptop is not None:
-                if laptop.processor not in data:
-                    data[laptop.processor] = []
-                data[laptop.processor].append(laptop.price)
+        for l in laptops:
+            if l and l.price is not None:
+                k = getattr(l, key)
+                data.setdefault(k, []).append(l.price)
 
-        price_data = []
-        for processor, prices in data.items():
-            count = len(prices)
-            avg = sum(prices) / count
-            price_data.append(
+        result = []
+        for k, prices in data.items():
+            result.append(
                 [
-                    processor,
-                    f"{count} units",
-                    f"₱{avg:,.2f}",
-                    f"₱{max(prices):,.2f}",
-                    f"₱{min(prices):,.2f}",
+                    k,
+                    f"{len(prices)} units",
+                    sum(prices) / len(prices),
+                    max(prices),
+                    min(prices),
                 ]
             )
-        print(
-            tabulate(
-                price_data,
-                headers=[
-                    "Processor",
-                    "Total Units",
-                    "Average Price",
-                    "Max Price",
-                    "Min Price",
-                ],
-                tablefmt="rounded_grid",
-            )
-        )
 
-    @staticmethod
-    def avg_price_graphics(laptops):
-        data = {}
+        result.sort(key=lambda x: x[2], reverse=True)
 
-        for laptop in laptops:
-            if laptop is not None:
-                if laptop.graphics not in data:
-                    data[laptop.graphics] = []
-                data[laptop.graphics].append(laptop.price)
+        formatted = [
+            [
+                row[0],
+                row[1],
+                f"₱{row[2]:,.2f}",
+                f"₱{row[3]:,.2f}",
+                f"₱{row[4]:,.2f}",
+            ]
+            for row in result
+        ]
 
-        price_data = []
-        for graphics, prices in data.items():
-            count = len(prices)
-            avg = sum(prices) / count
-            price_data.append(
-                [
-                    graphics,
-                    f"{count} units",
-                    f"₱{avg:,.2f}",
-                    f"₱{max(prices):,.2f}",
-                    f"₱{min(prices):,.2f}",
-                ]
-            )
-        print(
-            tabulate(
-                price_data,
-                headers=[
-                    "Graphics",
-                    "Total Units",
-                    "Average Price",
-                    "Max Price",
-                    "Min Price",
-                ],
-                tablefmt="rounded_grid",
-            )
-        )
+        return formatted
 
     # Market Segmentation
     @staticmethod
@@ -120,7 +84,7 @@ class Laptop:
         category_data = {}
 
         for laptop in laptops:
-            if laptop is not None:
+            if laptop and laptop.price is not None:
                 if laptop.category not in category_data:
                     category_data[laptop.category] = {
                         "Processor": {},
@@ -152,93 +116,85 @@ class Laptop:
             max_gpus = max(gpus, key=gpus.get)
 
             final_category_data.append(
-                {
-                    "Category": items,
-                    "Most Common Processor": max_processor,
-                    "Most Common GPU": max_gpus,
-                    "Total Units": f"{sum(processors.values())} Units",
-                    "Average Price": f"₱{avg_price:,.2f}",
-                }
-            )
-
-        print(
-            tabulate(
-                final_category_data,
-                headers="keys",
-                tablefmt="rounded_grid",
-            )
-        )
-
-    @staticmethod
-    def avg_price_ram(laptops):
-        data = {}
-
-        for laptop in laptops:
-            if laptop is not None:
-                if laptop.ram not in data:
-                    data[laptop.ram] = []
-                data[laptop.ram].append(laptop.price)
-
-        price_data = []
-        for ram, prices in data.items():
-            count = len(prices)
-            avg = sum(prices) / count
-            price_data.append(
                 [
-                    ram,
-                    f"{count} units",
-                    f"₱{avg:,.2f}",
-                    f"₱{max(prices):,.2f}",
-                    f"₱{min(prices):,.2f}",
+                    items,
+                    max_processor,
+                    max_gpus,
+                    f"{sum(processors.values())} units",
+                    avg_price,
                 ]
             )
-        print(
-            tabulate(
-                price_data,
-                headers=[
-                    "RAM",
-                    "Total Units",
-                    "Average Price",
-                    "Max Price",
-                    "Min Price",
-                ],
-                tablefmt="rounded_grid",
-            )
-        )
+        final_category_data.sort(key=lambda x: x[4], reverse=True)
+        formatted = [
+            [
+                row[0],
+                row[1],
+                row[2],
+                row[3],
+                f"₱{row[4]:,.2f}",
+            ]
+            for row in final_category_data
+        ]
+
+        return formatted
 
     @staticmethod
-    def brand_analysis(laptops):
-        brand_data = {}
+    def best_value_category(laptops):
+        category_prices = {}
 
-        for laptop in laptops:
-            if laptop is not None:
-                if laptop.brand not in brand_data:
-                    brand_data[laptop.brand] = []
-                brand_data[laptop.brand].append(laptop.price)
+        for l in laptops:
+            if l and l.price is not None:
+                category_prices.setdefault(l.category, []).append(l.price)
 
-        final_brand_data = []
-        for brand, prices in brand_data.items():
-            count = len(prices)
-            avg = sum(prices) / count
-            final_brand_data.append(
-                [
-                    brand,
-                    f"{count} units",
-                    f"₱{avg:,.2f}",
-                    f"₱{max(prices):,.2f}",
-                    f"₱{min(prices):,.2f}",
-                ]
-            )
-        print(
-            tabulate(
-                final_brand_data,
-                headers=[
-                    "Brand",
-                    "Total Units",
-                    "Average Price",
-                    "Max Price",
-                    "Min Price",
-                ],
-                tablefmt="rounded_grid",
-            )
+        best_category = None
+        best_avg = float("inf")
+
+        for category, prices in category_prices.items():
+            avg = sum(prices) / len(prices)
+            if avg < best_avg:
+                best_avg = avg
+                best_category = category
+
+        return best_category, best_avg
+
+    @staticmethod
+    def display(title, data, headers):
+        print(f"\n{title}")
+        print(tabulate(data, headers=headers, tablefmt="rounded_grid"))
+
+    @staticmethod
+    def analyze(laptops):
+        print("\nOVERALL PRICE STATS")
+        print(f"Average Price: ₱{Laptop.avg_price(laptops):,.2f}")
+        print(f"Min Price: ₱{Laptop.min_price(laptops):,.2f}")
+        print(f"Max Price: ₱{Laptop.max_price(laptops):,.2f}")
+
+        Laptop.display(
+            "Price by Processor",
+            Laptop.group_and_analyze(laptops, "processor"),
+            ["Processor", "Total Units", "Avg Price", "Max Price", "Min Price"],
+        )
+
+        Laptop.display(
+            "Price by Graphics",
+            Laptop.group_and_analyze(laptops, "graphics"),
+            ["Graphics", "Total Units", "Avg Price", "Max Price", "Min Price"],
+        )
+
+        Laptop.display(
+            "Price by RAM",
+            Laptop.group_and_analyze(laptops, "ram"),
+            ["RAM", "Total Units", "Avg Price", "Max Price", "Min Price"],
+        )
+
+        Laptop.display(
+            "Brand Analysis",
+            Laptop.group_and_analyze(laptops, "brand"),
+            ["Brand", "Total Units", "Avg Price", "Max Price", "Min Price"],
+        )
+
+        Laptop.display(
+            "Market Segmentation",
+            Laptop.group_by_category(laptops),
+            ["Category", "Top Processor", "Top GPU", "Total Units", "Avg Price"],
         )

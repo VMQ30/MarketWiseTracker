@@ -25,14 +25,7 @@ def main():
 
     convert_to_csv(laptop_list)
     laptops = load_from_csv("laptops_info.csv")
-    print(f"\nAverage Price: ₱{Laptop.avg_price(laptops):,.2f}")
-    print(f"Most Expensive Price: ₱{Laptop.max_price(laptops):,.2f}")
-    print(f"Cheapest Price: ₱{Laptop.min_price(laptops):,.2f}\n")
-    Laptop.brand_analysis(laptops)
-    Laptop.group_by_category(laptops)
-    Laptop.avg_price_processor(laptops)
-    Laptop.avg_price_graphics(laptops)
-    Laptop.avg_price_ram(laptops)
+    Laptop.analyze(laptops)
 
 
 def extract_data(file_path):
